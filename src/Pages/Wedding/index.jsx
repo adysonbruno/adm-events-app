@@ -17,6 +17,7 @@ const Wedding = () => {
             {weddingCart.map(product=>{
                 return(
                     <ProductCard
+                        isInCart
                         type={"wedding"}
                         product={product}
                         img = {product.image_url}
@@ -24,6 +25,7 @@ const Wedding = () => {
                         brewed = {product.first_brewed}
                         description = {product.description}
                         volume = {product.volume.value}
+                        quantity = {product.quantity}
                     />
                 )
             })}

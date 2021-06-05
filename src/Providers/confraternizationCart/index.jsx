@@ -25,11 +25,17 @@ export const ConfraternizationCartProvider = ({children}) => {
     }, [confraternizationCart])
 
     const removeFromConfraternizationCart = (product) => {
-        const newConfraternizationCart = confraternizationCart.filter(
-            productOnConfraternizationCart => productOnConfraternizationCart.name !== product.name
-        )
+        let productFind = confraternizationCart.find(productCart => productCart.name === product.name);
 
-        setConfraternizationCart(newConfraternizationCart)
+        if(productFind.quantity - 1 > 0){
+            productFind.quantity -= 1;
+            setConfraternizationCart([...confraternizationCart])
+        }else{
+            const newConfraternizationCart = confraternizationCart.filter(
+                productOnConfraternizationCart => productOnConfraternizationCart.name !== product.name
+            )
+            setConfraternizationCart(newConfraternizationCart)
+        }
     }
 
     return(

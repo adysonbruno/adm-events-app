@@ -13,10 +13,11 @@ const Graduation = () => {
         <div>
             <NavBar/>
 
-            <h2>Graduação</h2>
+            <h2>Formatura</h2>
             {graduationCart.map(product=>{
                 return(
                     <ProductCard
+                        isInCart
                         type={"graduation"}
                         product={product}
                         img = {product.image_url}
@@ -24,6 +25,7 @@ const Graduation = () => {
                         brewed = {product.first_brewed}
                         description = {product.description}
                         volume = {product.volume.value}
+                        quantity = {product.quantity}
                     />
                 )
             })}

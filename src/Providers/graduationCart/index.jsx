@@ -25,11 +25,18 @@ export const GraduationCartProvider = ({children}) => {
     }, [graduationCart])
 
     const removeFromGraduationCart = (product) => {
-        const newGraduationCart = graduationCart.filter(
-            productOnGraduationCart => productOnGraduationCart.name !== product.name
-        )
 
-        setGraduationCart(newGraduationCart)
+        let productFind = graduationCart.find(productCart => productCart.name === product.name);
+
+        if(productFind.quantity - 1 > 0){
+            productFind.quantity -= 1;
+            setGraduationCart([...graduationCart])
+        }else{
+            const newGraduationCart = graduationCart.filter(
+                productOnConfraternizationCart => productOnConfraternizationCart.name !== product.name
+            )
+            setGraduationCart(newGraduationCart)
+        }
     }
 
     return(

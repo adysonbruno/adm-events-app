@@ -17,6 +17,7 @@ const Confraternization = () => {
             {confraternizationCart.map(product=>{
                 return(
                     <ProductCard
+                        isInCart
                         type={"confraternization"}
                         product={product}
                         img = {product.image_url}
@@ -24,6 +25,7 @@ const Confraternization = () => {
                         brewed = {product.first_brewed}
                         description = {product.description}
                         volume = {product.volume.value}
+                        quantity = {product.quantity}
                     />
                 )
             })}

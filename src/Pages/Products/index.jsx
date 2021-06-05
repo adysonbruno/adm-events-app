@@ -3,9 +3,8 @@ import {useContext} from "react";
 import {ProductsContext} from "../../Providers/products";
 import ProductCard from "../../Components/ProductCard";
 
-const Products = ({image_url}) => {
-    const {products, getProducts} = useContext(ProductsContext)
-    console.log(products)
+const Products = () => {
+    const {products} = useContext(ProductsContext)
     return (
         <div>
             <NavBar/>
@@ -14,6 +13,7 @@ const Products = ({image_url}) => {
             {products.map(product => {
              return(
                  <ProductCard
+                    keyProducts = {product.id}
                     product={product}
                     img = {product.image_url}
                     name = {product.name}
