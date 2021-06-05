@@ -10,8 +10,14 @@ export const ConfraternizationCartProvider = ({children}) => {
     );
 
     const addToConfraternizationCart = (product) => {
-
-        setConfraternizationCart([...confraternizationCart, product])
+        let productFind = confraternizationCart.find(productCart => productCart.name === product.name);
+        if(productFind === undefined){
+            product.quantity = 1;
+            setConfraternizationCart([...confraternizationCart, product])
+        }else{
+            product.quantity += 1;
+            setConfraternizationCart([...confraternizationCart])
+        }
     }
 
     useEffect(()=>{
