@@ -3,6 +3,7 @@ import Products from "../Pages/Products";
 import Confraternization from "../Pages/Confraternization";
 import Graduation from "../Pages/Graduation";
 import Wedding from "../Pages/Wedding";
+import NotFound from "../Pages/NotFound";
 
 const Routes = () => {
     return(
@@ -21,6 +22,9 @@ const Routes = () => {
             </Route>
             <Route path = "/casamento" >
                 <Wedding/>
+            </Route>
+            <Route>
+                <NotFound/>
             </Route>
         </Switch>
     )
