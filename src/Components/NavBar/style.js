@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const NavBarContainer = styled.nav`
-  //background-color: #581D17;
-  //background-color: #A94007;
+  margin: 25px 10px;
   background-color: #E38200;
   display: flex;
   flex-direction: column;
@@ -47,14 +46,4 @@ export const NavBarContainer = styled.nav`
       font-size: 1.6rem;
     }
   }
-  
 `
-//
-// export const LinksContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//
-//   @media (min-width: 768px){
-//     flex-direction: row;
-//   }
-// `

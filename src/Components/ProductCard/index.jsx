@@ -8,7 +8,7 @@ import {WeddingCartContext} from "../../Providers/weddingCart";
 
 import ModalCategory from "../ModalCategory";
 import ModalDescription from "../ModalDescription";
-
+import {toast} from "react-toastify";
 
 const ProductCard = (
     {isInCart=false, keyProducts, product, img, name, brewed, description, volume, type, quantity }
@@ -17,9 +17,9 @@ const ProductCard = (
 
     const [showModalDescription, setShowModalDescription] = useState(false)
 
-    const {addToGraduationCart, removeFromGraduationCart} = useContext(GraduationCartContext);
-    const {addToConfraternizationCart, removeFromConfraternizationCart} = useContext(ConfraternizationCartContext);
-    const {addToWeddingCart, removeFromWeddingCart} = useContext(WeddingCartContext);
+    const {addToGraduationCart, addQuantityProductGraduation, removeFromGraduationCart, removeProductGraduation} = useContext(GraduationCartContext);
+    const {addToConfraternizationCart, addQuantityProductConfraternization,removeFromConfraternizationCart, removeProductConfraternization} = useContext(ConfraternizationCartContext);
+    const {addToWeddingCart, addQuantityProductWedding,removeFromWeddingCart, removeProductWedding} = useContext(WeddingCartContext);
 
     const switchShowModal = () => {
         if (showModal === false) {
@@ -29,13 +29,13 @@ const ProductCard = (
         }
     }
 
-    const handleAdd = (product) => {
+    const handleAddQuantity = (product) => {
         if (type === "graduation") {
-            return addToGraduationCart(product);
-        } else if (type === "confraternization") {
-            return addToConfraternizationCart(product)
-        } else if (type === "wedding") {
-            return addToWeddingCart(product);
+            return addQuantityProductGraduation(product);
+        }else if (type === "confraternization") {
+            return addQuantityProductConfraternization(product)
+        }else if (type === "wedding") {
+            return addQuantityProductWedding(product);
         }
     }
 
@@ -49,28 +49,41 @@ const ProductCard = (
         }
     }
 
+    const handleRemoveProduct = (product) => {
+        if (type === "graduation") {
+            return removeProductGraduation(product);
+        } else if (type === "confraternization") {
+            return removeProductConfraternization(product)
+        } else if (type === "wedding") {
+            return removeProductWedding(product);
+        }
+    }
+
     return (
         <ProductContainer key={keyProducts}>
             <img src={img} alt={"product"}/>
             <h2>{name}</h2>
-            <h3>Inicio de fabricação: {brewed}</h3>
-            <button onClick={() => setShowModalDescription(true)} >Descrição</button>
-            <h3>Volume: {volume} litros</h3>
             {
                 (isInCart && !showModal && !showModalDescription) ?
                     (
                         <div>
+                            <h3>Inicio de fabricação: {brewed}</h3>
+                            <button onClick={() => setShowModalDescription(true)} >Descrição</button>
+                            <h3>Volume: {volume} litros</h3>
                             <h3>Quantidade:</h3>
-                            <div>
+                            <section>
                                 <button onClick={ () => handleRemove (product)} >-</button>
                                 <span>{quantity}</span>
-                                <button onClick={() => handleAdd(product)} >+</button>
-                            </div>
-                            <button onClick={() => handleRemove(product)}>Remover Item</button>
+                                <button onClick={() => handleAddQuantity(product)} >+</button>
+                            </section>
+                            <button onClick={() => handleRemoveProduct(product)}>Remover Item</button>
                         </div>
                     ): (!showModal && !showModalDescription) &&
                     (
                         <div>
+                            <h3>Inicio de fabricação: {brewed}</h3>
+                            <button onClick={() => setShowModalDescription(true)} >Descrição</button>
+                            <h3>Volume: {volume} litros</h3>
                             <button onClick={() => switchShowModal()}>Adicionar</button>
                         </div>
                     )

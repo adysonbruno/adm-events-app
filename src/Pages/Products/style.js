@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   h1 {
-    color: #542f2e
+    color: #8b2218;
   }
 `
 
@@ -21,5 +21,4 @@ export const ProductsContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
   }
-
 `

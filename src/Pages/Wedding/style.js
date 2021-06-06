@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const Container = styled.div`
   h1{
     margin: 20px 0 10px ;
-    color: #542f2e
+    color: #8b2218;
   }
   
   h5{
     margin: 10px 0 15px;
     font-size: 1.2rem;
-    color: #542f2e
+    color: #8b2218
   }
   
   span{
@@ -32,5 +32,4 @@ export const WeddingContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
   }
-
 `

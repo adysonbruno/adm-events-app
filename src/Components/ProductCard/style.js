@@ -30,13 +30,18 @@ export const ProductContainer = styled.div`
   }
     
   div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 95%;
+    height: 380px;
     span{
       font-size: 1.3rem;
     }
   }
   
   button{
-    margin: 20px;
+    margin: 15px;
     color: #581D17;
     box-sizing: border-box;
     font-size: 1.2rem;

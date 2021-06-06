@@ -8,25 +8,28 @@ const ModalCategory = ({showModal, setShowModal, addToGraduationCart, product, a
             {
                 showModal &&
                 <Container>
-                    <h3>Escolha em qual Categoria quer adicionar</h3>
-                    <button onClick={() => {
-                        addToWeddingCart(product);
-                        setShowModal(false)
-                    }
-                    }>Casamento
-                    </button>
-                    <button onClick={() => {
-                        addToGraduationCart(product);
-                        setShowModal(false)
-                    }
-                    }>Formatura
-                    </button>
-                    <button onClick={() => {
-                        addToConfraternizationCart(product);
-                        setShowModal(false)
-                    }
-                    }>Confraternização
-                    </button>
+                    <h3>Em qual Categoria quer adicionar?</h3>
+                    <section>
+                        <button onClick={() => {
+                            addToWeddingCart(product);
+                            setShowModal(false)
+                        }
+                        }>Casamento
+                        </button>
+                        <button onClick={() => {
+                            addToGraduationCart(product);
+                            setShowModal(false)
+                        }
+                        }>Formatura
+                        </button>
+                        <button onClick={() => {
+                            addToConfraternizationCart(product);
+                            setShowModal(false)
+                        }
+                        }>Confraternização
+                        </button>
+                        <button className={"come-back"} onClick={() => setShowModal(false)} >Voltar</button>
+                    </section>
                 </Container>
             }
         </>
