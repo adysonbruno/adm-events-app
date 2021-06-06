@@ -1,17 +1,23 @@
+import Logo from "../../Assets/Images/logo.png"
+
 import {Link} from "react-router-dom";
 
-import React from 'react';
+import {NavBarContainer} from "./style";
 
 const NavBar = () => {
+
     return (
-        <div>
-            <h2>ADM DE EVENTOS</h2>
-            <Link to={"/"} >Home</Link>
-            <Link to={"/produtos"} >Produtos</Link>
-            <Link to={"/confraternizacao"} >Confraternização</Link>
-            <Link to={"/graduacao"} >Formatura</Link>
-            <Link to={"/casamento"} >Casamento</Link>
-        </div>
+        <NavBarContainer onresize = { () => console.log(window.innerWidth) } >
+
+                <Link to={"/"}>
+                    <img src={Logo} alt={"logo"} />
+                </Link>
+                <Link to={"/produtos"} >Produtos</Link>
+                <Link to={"/confraternizacao"} >Confraternização</Link>
+                <Link to={"/graduacao"} >Formatura</Link>
+                <Link to={"/casamento"} >Casamento</Link>
+
+        </NavBarContainer>
     );
 };
 

@@ -7,12 +7,15 @@ import {ConfraternizationCartContext} from "../../Providers/confraternizationCar
 import {WeddingCartContext} from "../../Providers/weddingCart";
 
 import ModalCategory from "../ModalCategory";
+import ModalDescription from "../ModalDescription";
 
 
 const ProductCard = (
     {isInCart=false, keyProducts, product, img, name, brewed, description, volume, type, quantity }
 ) => {
     const [showModal, setShowModal] = useState(false)
+
+    const [showModalDescription, setShowModalDescription] = useState(false)
 
     const {addToGraduationCart, removeFromGraduationCart} = useContext(GraduationCartContext);
     const {addToConfraternizationCart, removeFromConfraternizationCart} = useContext(ConfraternizationCartContext);
@@ -49,30 +52,34 @@ const ProductCard = (
     return (
         <ProductContainer key={keyProducts}>
             <img src={img} alt={"product"}/>
-            <h2>Nome: {name}</h2>
-            <h3>Data Inicio de fabricação: {brewed}</h3>
-            <details>
-                <summary>Descrição</summary>
-                <p>
-                    {description}
-                </p>
-            </details>
-            <h3>Quantidade de litros: {volume} litros</h3>
+            <h2>{name}</h2>
+            <h3>Inicio de fabricação: {brewed}</h3>
+            <button onClick={() => setShowModalDescription(true)} >Descrição</button>
+            <h3>Volume: {volume} litros</h3>
             {
-                isInCart ?
+                (isInCart && !showModal && !showModalDescription) ?
                     (
-                        <>
-                            <h2>Quantidade:</h2>
+                        <div>
+                            <h3>Quantidade:</h3>
                             <div>
                                 <button onClick={ () => handleRemove (product)} >-</button>
-                                {quantity}
+                                <span>{quantity}</span>
                                 <button onClick={() => handleAdd(product)} >+</button>
                             </div>
                             <button onClick={() => handleRemove(product)}>Remover Item</button>
-                        </>
-                    ):
-                    (<button onClick={() => switchShowModal()}>Add to...</button>)
+                        </div>
+                    ): (!showModal && !showModalDescription) &&
+                    (
+                        <div>
+                            <button onClick={() => switchShowModal()}>Adicionar</button>
+                        </div>
+                    )
             }
+            <ModalDescription
+                showModalDescription={showModalDescription}
+                setShowModalDescription = {setShowModalDescription}
+                description = {description}
+            />
             <ModalCategory
                 showModal={showModal}
                 setShowModal = {setShowModal}

@@ -27,11 +27,17 @@ export const  WeddingCartProvider = ({children}) => {
     }, [weddingCart])
 
     const removeFromWeddingCart = (product) => {
-        const newWeddingCart = weddingCart.filter(
-            productOnWeddingCart => productOnWeddingCart.name !== product.name
-        )
+        let productFind = weddingCart.find(productCart => productCart.name === product.name);
 
-        setWeddingCart(newWeddingCart)
+        if(productFind.quantity - 1 > 0){
+            productFind.quantity -= 1;
+            setWeddingCart([...weddingCart])
+        }else{
+            const newWeddingCart = weddingCart.filter(
+                productOnConfraternizationCart => productOnConfraternizationCart.name !== product.name
+            )
+            setWeddingCart(newWeddingCart)
+        }
     }
 
     return(

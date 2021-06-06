@@ -1,11 +1,14 @@
 import React from 'react';
 
+import {Container} from "./style";
+
 const ModalCategory = ({showModal, setShowModal, addToGraduationCart, product, addToConfraternizationCart, addToWeddingCart}) => {
     return (
         <>
             {
                 showModal &&
-                <div>
+                <Container>
+                    <h3>Escolha em qual Categoria quer adicionar</h3>
                     <button onClick={() => {
                         addToWeddingCart(product);
                         setShowModal(false)
@@ -24,7 +27,7 @@ const ModalCategory = ({showModal, setShowModal, addToGraduationCart, product, a
                     }
                     }>Confraternização
                     </button>
-                </div>
+                </Container>
             }
         </>
     );
